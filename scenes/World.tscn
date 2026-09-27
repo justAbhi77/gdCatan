@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://draw0vniq0ot0"]
+
+[ext_resource type="Script" uid="uid://bosgyx1qecuje" path="res://scripts/tiles/boardGen.gd" id="1_kqs1s"]
+[ext_resource type="Resource" uid="uid://mysudvrtjff2" path="res://board/boardConfig.tres" id="2_32lhk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d1c63"]
+
+[sub_resource type="Sky" id="Sky_7g83o"]
+sky_material = SubResource("ProceduralSkyMaterial_d1c63")
+
+[sub_resource type="Environment" id="Environment_32lhk"]
+background_mode = 2
+sky = SubResource("Sky_7g83o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32lhk"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kqs1s"]
+
+[node name="worldRoot" type="Node3D" unique_id=1602904994]
+
+[node name="worldEnvironment" type="WorldEnvironment" parent="." unique_id=214843562]
+environment = SubResource("Environment_32lhk")
+
+[node name="directionalLight3D" type="DirectionalLight3D" parent="." unique_id=147834918]
+transform = Transform3D(1, 0, 0, 0, 0.70712644, 0.7070871, 0, -0.7070871, 0.70712644, 0, 5, 0)
+
+[node name="plane" type="MeshInstance3D" parent="." unique_id=863565023]
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, -1)
+material_override = SubResource("StandardMaterial3D_32lhk")
+mesh = SubResource("PlaneMesh_kqs1s")
+
+[node name="camera3D" type="Camera3D" parent="." unique_id=1578762410]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 30)
+projection = 1
+size = 5.0
+
+[node name="Board" type="Node3D" parent="." unique_id=2132977190]
+script = ExtResource("1_kqs1s")
+board_config = ExtResource("2_32lhk")

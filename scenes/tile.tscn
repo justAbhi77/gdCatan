@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d3dpmur8hf247"]
+
+[ext_resource type="ArrayMesh" uid="uid://ps318trgawf4" path="res://models/water.obj" id="1_3dk36"]
+[ext_resource type="Script" uid="uid://d4k1o5u1jt3ja" path="res://scripts/tiles/BoardTile.gd" id="1_ywnoi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32lhk"]
+
+[node name="tileRoot" type="Node3D" unique_id=550755964]
+script = ExtResource("1_ywnoi")
+
+[node name="tileMesh" type="MeshInstance3D" parent="." unique_id=175249113]
+transform = Transform3D(1.9106855e-15, 4.3711385e-08, 0.9999999, 1, -4.3711385e-08, 0, 4.371139e-08, 0.9999999, -4.3711385e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_32lhk")
+mesh = ExtResource("1_3dk36")
