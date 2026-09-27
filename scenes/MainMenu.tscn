@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7t8rjyfs5tyr"]
 
-[ext_resource type="Script" uid="uid://710ej1ebsd74" path="res://scripts/helpers/gdCatanNetworkManager.gd" id="1_0ykhv"]
+[ext_resource type="Script" uid="uid://710ej1ebsd74" path="res://scripts/helpers/misc/gdCatanNetworkManager.gd" id="1_0ykhv"]
 [ext_resource type="PackedScene" uid="uid://draw0vniq0ot0" path="res://scenes/World.tscn" id="2_2wh52"]
 
 [node name="Control" type="Control" unique_id=199268027]

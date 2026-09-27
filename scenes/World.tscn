@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://draw0vniq0ot0"]
 
-[ext_resource type="Script" uid="uid://bosgyx1qecuje" path="res://scripts/tiles/boardGen.gd" id="1_kqs1s"]
+[ext_resource type="Script" uid="uid://uftw53vafbrt" path="res://scripts/helpers/camera/gdCatanCamera.gd" id="1_7g83o"]
+[ext_resource type="Script" uid="uid://bosgyx1qecuje" path="res://scripts/tiles/gdCatanBoardGen.gd" id="2_7g83o"]
 [ext_resource type="Resource" uid="uid://mysudvrtjff2" path="res://board/boardConfig.tres" id="2_32lhk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d1c63"]
@@ -26,15 +27,18 @@ environment = SubResource("Environment_32lhk")
 transform = Transform3D(1, 0, 0, 0, 0.70712644, 0.7070871, 0, -0.7070871, 0.70712644, 0, 5, 0)
 
 [node name="plane" type="MeshInstance3D" parent="." unique_id=863565023]
-transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, -1)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -1)
 material_override = SubResource("StandardMaterial3D_32lhk")
 mesh = SubResource("PlaneMesh_kqs1s")
 
-[node name="camera3D" type="Camera3D" parent="." unique_id=1578762410]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 30)
-projection = 1
-size = 5.0
-
 [node name="Board" type="Node3D" parent="." unique_id=2132977190]
-script = ExtResource("1_kqs1s")
+script = ExtResource("2_7g83o")
 board_config = ExtResource("2_32lhk")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=611958326]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.2603183, 0)
+spring_length = 3.0
+
+[node name="camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1578762410]
+size = 5.0
+script = ExtResource("1_7g83o")

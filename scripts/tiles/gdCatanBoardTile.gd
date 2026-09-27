@@ -1,5 +1,5 @@
 ﻿
-class_name BoardTile
+class_name gdCatanBoardTile
 extends Node3D
 
 @onready var tile_mesh: MeshInstance3D = $tileMesh

@@ -1,11 +1,11 @@
 ﻿
-class_name boardConfig
+class_name gdCatanBoardConfig
 extends Resource
 
 @export var hexagon_grid_size: int = 3
-@export var grid_tile_size: Vector3 = Vector3(1.15, 1, 0.1)
-@export var tile_mesh_size: Vector3 = Vector3(1.15, 1, 0.1)
-@export var settlement_mesh_size: Vector3 = Vector3(0.25, 0.25, 0.1)
+@export var grid_tile_size: Vector3 = Vector3(1.15, 0.1, 1)
+@export var tile_mesh_size: Vector3 = Vector3(1.15, 0.1, 1)
+@export var settlement_mesh_size: Vector3 = Vector3(0.25, 0.1, 0.25)
 @export var RoadMeshSizeY: float = 0.05
 @export var HexTileClass: PackedScene
 @export var tileTypeDistribution: Dictionary[gdCatanTypes.EHexTileType, int] = {
