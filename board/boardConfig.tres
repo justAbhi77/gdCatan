@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="gdCatanBoardConfig" format=3 uid="uid://mysudvrtjff2"]
 
 [ext_resource type="Script" uid="uid://8re32rmqamax" path="res://scripts/config/gdCatanBoardConfig.gd" id="1_6r5fu"]
-[ext_resource type="PackedScene" uid="uid://d3dpmur8hf247" path="res://scenes/tile.tscn" id="1_o3hwb"]
+[ext_resource type="PackedScene" uid="uid://d3dpmur8hf247" path="res://scenes/Tile.tscn" id="1_o3hwb"]
 
 [resource]
 script = ExtResource("1_6r5fu")

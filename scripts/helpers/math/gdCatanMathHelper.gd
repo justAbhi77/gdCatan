@@ -29,7 +29,7 @@ static func tile_index_to_world(tile_index: Vector2i, tile_type: gdCatanTypes.EH
 
 	var tile_size_y :=  0.0
 	if tile_type == gdCatanTypes.EHexTileType.Settlement or tile_type == gdCatanTypes.EHexTileType.Road:
-		tile_size_y = tile_size.y * 1.1
+		tile_size_y = tile_size.y
 
 	return grid_bottom_left + Vector3(tile_index.x * tile_size_world.x, tile_size_y, tile_index.y * tile_size_world.y)
 

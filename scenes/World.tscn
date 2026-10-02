@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://draw0vniq0ot0"]
 
-[ext_resource type="Script" uid="uid://uftw53vafbrt" path="res://scripts/helpers/camera/gdCatanCamera.gd" id="1_7g83o"]
 [ext_resource type="Script" uid="uid://bosgyx1qecuje" path="res://scripts/tiles/gdCatanBoardGen.gd" id="2_7g83o"]
 [ext_resource type="Resource" uid="uid://mysudvrtjff2" path="res://board/boardConfig.tres" id="2_32lhk"]
+[ext_resource type="PackedScene" uid="uid://bx8eha0m7nops" path="res://scenes/Camera.tscn" id="3_7g83o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d1c63"]
 
@@ -31,14 +31,16 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -1)
 material_override = SubResource("StandardMaterial3D_32lhk")
 mesh = SubResource("PlaneMesh_kqs1s")
 
-[node name="Board" type="Node3D" parent="." unique_id=2132977190]
+[node name="gdCatanBoard" type="Node3D" parent="." unique_id=2132977190]
 script = ExtResource("2_7g83o")
 board_config = ExtResource("2_32lhk")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=611958326]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.2603183, 0)
-spring_length = 3.0
-
-[node name="camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1578762410]
-size = 5.0
-script = ExtResource("1_7g83o")
+[node name="gdCatanCamera" parent="." unique_id=2572534 instance=ExtResource("3_7g83o")]
+move_input_mul = 20.0
+move_speed = 5.0
+rotation_input_mul = 2.0
+rotation_speed = 45.0
+zoom_speed = 2.0
+zoom_smooth_speed = 10.0
+min_zoom = 2.0
+max_zoom = 15.0
