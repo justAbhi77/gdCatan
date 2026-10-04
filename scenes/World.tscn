@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://draw0vniq0ot0"]
 
+[ext_resource type="PackedScene" uid="uid://drgyjwdtw1w8e" path="res://scenes/World_UI.tscn" id="1_1lgw5"]
 [ext_resource type="Script" uid="uid://bosgyx1qecuje" path="res://scripts/tiles/gdCatanBoardGen.gd" id="2_7g83o"]
 [ext_resource type="Resource" uid="uid://mysudvrtjff2" path="res://board/boardConfig.tres" id="2_32lhk"]
 [ext_resource type="PackedScene" uid="uid://bx8eha0m7nops" path="res://scenes/Camera.tscn" id="3_7g83o"]
+[ext_resource type="Script" uid="uid://ibk2spjq7ibi" path="res://scripts/helpers/camera/gdCatanMouse.gd" id="4_d1c63"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d1c63"]
 
@@ -20,6 +22,8 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="worldRoot" type="Node3D" unique_id=1602904994]
 
+[node name="gdCatanWorldUi" parent="." unique_id=803709381 instance=ExtResource("1_1lgw5")]
+
 [node name="worldEnvironment" type="WorldEnvironment" parent="." unique_id=214843562]
 environment = SubResource("Environment_32lhk")
 
@@ -27,20 +31,24 @@ environment = SubResource("Environment_32lhk")
 transform = Transform3D(1, 0, 0, 0, 0.70712644, 0.7070871, 0, -0.7070871, 0.70712644, 0, 5, 0)
 
 [node name="plane" type="MeshInstance3D" parent="." unique_id=863565023]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -1)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_32lhk")
 mesh = SubResource("PlaneMesh_kqs1s")
+
+[node name="gdCatanCamera" parent="." unique_id=2572534 instance=ExtResource("3_7g83o")]
+zoom_speed = 0.2
+zoom_smooth_speed = 1.0
+min_zoom = 0.5
+max_zoom = 10.0
+
+[node name="gdCatanMouse" type="Node3D" parent="." unique_id=1913753898 node_paths=PackedStringArray("Board", "Camera", "ui")]
+script = ExtResource("4_d1c63")
+Board = NodePath("../gdCatanBoard")
+Camera = NodePath("../gdCatanCamera")
+ui = NodePath("../gdCatanWorldUi")
 
 [node name="gdCatanBoard" type="Node3D" parent="." unique_id=2132977190]
 script = ExtResource("2_7g83o")
 board_config = ExtResource("2_32lhk")
 
-[node name="gdCatanCamera" parent="." unique_id=2572534 instance=ExtResource("3_7g83o")]
-move_input_mul = 20.0
-move_speed = 5.0
-rotation_input_mul = 2.0
-rotation_speed = 45.0
-zoom_speed = 2.0
-zoom_smooth_speed = 10.0
-min_zoom = 2.0
-max_zoom = 15.0
+[editable path="gdCatanWorldUi"]

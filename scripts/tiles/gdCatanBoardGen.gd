@@ -1,4 +1,5 @@
 
+class_name gdCatanBoardGen
 extends Node3D
 
 @export var gen_iteration_time: float = 0.1

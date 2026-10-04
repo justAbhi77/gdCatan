@@ -5,5 +5,4 @@
 
 [resource]
 script = ExtResource("1_6r5fu")
-hexagon_grid_size = 1
 HexTileClass = ExtResource("1_o3hwb")

@@ -1,4 +1,4 @@
-﻿
+
 class_name gdCatanMathHelper
 
 static var ONE_MOD_SIX: float = 1.0 / 6.0
@@ -58,3 +58,52 @@ static func get_hexagon_edges(center: Vector2i) -> Array[Vector2i]:
 		center + Vector2i(0, -6),
 		center + Vector2i(3, -3),
 		]
+
+static func getMouseIntersectionResult(intersection: Vector3, grid_bottom_left: Vector3, tile_div: Vector2) -> gdCatanMouseInteractionResult:
+	var grid_local: Vector3 = intersection - grid_bottom_left
+	
+	var tile_index_continuous := Vector2(grid_local.x, grid_local.z * 2.0) / tile_div
+	
+	var unsnapped := Vector2(tile_index_continuous.x + 2.3 / 6.0, (tile_index_continuous.y / 2.0) * 12.0)
+	
+	var snapped_tile_index: Vector2
+	var BucketX: int = roundi((tile_index_continuous.x + 2.3) / 6.0)
+	snapped_tile_index.x = BucketX * 6.0
+	
+	if(BucketX % 2 == 0):
+		snapped_tile_index.y = roundi(tile_index_continuous.y / 2.0) * 12.0
+	else:
+		snapped_tile_index.y = (floori(tile_index_continuous.y / 2.0) * 12.0) + 6.0
+	
+	var closest_distance := unsnapped.distance_squared_to(snapped_tile_index)
+	var closest_index: Vector2i = Vector2i(int(snapped_tile_index.x), int(snapped_tile_index.y)) 
+	
+	var vertices := get_hexagon_vertices(closest_index)
+	var edges := get_hexagon_edges(closest_index)
+	
+	for i in range(vertices.size()):
+		var v_distance := unsnapped.distance_squared_to(vertices[i])
+		if(v_distance < closest_distance):
+			closest_distance = v_distance
+			closest_index = vertices[i]
+
+		var e_distance := unsnapped.distance_squared_to(edges[i])
+		if(e_distance < closest_distance):
+			closest_distance = e_distance
+			closest_index = edges[i]
+	return gdCatanMouseInteractionResult.new(grid_local, tile_index_continuous, unsnapped, snapped_tile_index, closest_index)
+
+class gdCatanMouseInteractionResult:
+	var grid_local: Vector3
+	var tile_index_continuous: Vector2
+	var unsnapped: Vector2
+	var snapped_tile_index: Vector2i
+	
+	var closest_index: Vector2i
+	
+	func _init(tmp_grid_local: Vector3, tmp_tile_index_continuous: Vector2, tmp_unsnapped: Vector2, tmp_snapped_tile_index: Vector2i, tmp_closest_index: Vector2i):
+		self.grid_local = tmp_grid_local
+		self.tile_index_continuous = tmp_tile_index_continuous
+		self.unsnapped = tmp_unsnapped
+		self.snapped_tile_index = tmp_snapped_tile_index
+		self.closest_index = tmp_closest_index

@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://d3dpmur8hf247"]
 
 [ext_resource type="ArrayMesh" uid="uid://ps318trgawf4" path="res://models/water.obj" id="1_3dk36"]
-[ext_resource type="Script" uid="uid://d4k1o5u1jt3ja" path="res://scripts/tiles/BoardTile.gd" id="1_ywnoi"]
+[ext_resource type="Script" uid="uid://d4k1o5u1jt3ja" path="res://scripts/tiles/gdCatanBoardTile.gd" id="1_ywnoi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32lhk"]
 
-[node name="tileRoot" type="Node3D" unique_id=550755964]
+[node name="Root" type="Node3D" unique_id=550755964]
 script = ExtResource("1_ywnoi")
 
-[node name="tileMesh" type="MeshInstance3D" parent="." unique_id=175249113]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=175249113]
 transform = Transform3D(-4.371139e-08, 0, 0.9999999, 0, 0.9999999, 0, -1, 0, -4.3711385e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_32lhk")
 mesh = ExtResource("1_3dk36")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2106711488]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0.10254941, 0)
+text = "Debug info"
+font_size = 24
+uppercase = true

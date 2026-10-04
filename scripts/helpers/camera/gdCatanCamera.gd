@@ -1,3 +1,5 @@
+
+class_name gdCatanCamera
 extends Node3D
 
 @onready var SpringArm: SpringArm3D = $SpringArm3D
